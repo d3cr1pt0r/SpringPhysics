@@ -38,11 +38,16 @@ class Engine(object):
                     if type(event) is sf.CloseEvent:
                         self.window.close()
 
-                self.game.update(self.dt)
+                self.update()
+                self.render()
 
                 self.acc -= self.dt
                 self.t += self.dt
 
-            self.window.clear(sf.Color(20, 20, 20))
-            self.game.render(self.window)
-            self.window.display()
+    def update(self):
+        self.game.update(self.dt)
+
+    def render(self):
+        self.window.clear(sf.Color(20, 20, 20))
+        self.game.render(self.window)
+        self.window.display()

@@ -57,15 +57,15 @@ class ParticleContained(Particle):
         self.containParticle()
 
     def containParticle(self):
-        if self.position.x < self.left:
-            self.position.x = self.left
+        if self.position.x - self.size < self.left:
+            self.position.x = self.left + self.size
             self.velocity.x *= -1
-        if self.position.x > self.right:
-            self.position.x = self.right
+        if self.position.x + self.size > self.right:
+            self.position.x = self.right - self.size
             self.velocity.x *= -1
-        if self.position.y < self.top:
-            self.position.y = self.top
+        if self.position.y - self.size < self.top:
+            self.position.y = self.top + self.size
             self.velocity.y *= -1
-        if self.position.y > self.bottom:
-            self.position.y = self.bottom
+        if self.position.y + self.size > self.bottom:
+            self.position.y = self.bottom - self.size
             self.velocity.y *= -1
