@@ -32,7 +32,7 @@ class Engine(object):
         while self.window.is_open:
             frame_time = self.clock.restart()
             self.acc += frame_time.seconds
-            #print self.acc
+
             while self.acc > self.dt:
                 for event in self.window.events:
                     if type(event) is sf.CloseEvent:
@@ -40,9 +40,9 @@ class Engine(object):
 
                 self.game.update(self.dt)
 
-                self.window.clear(sf.Color(20, 20, 20))
-                self.game.render(self.window)
-                self.window.display()
-
                 self.acc -= self.dt
                 self.t += self.dt
+
+            self.window.clear(sf.Color(20, 20, 20))
+            self.game.render(self.window)
+            self.window.display()
