@@ -34,15 +34,18 @@ class Engine(object):
             self.acc += frame_time.seconds
 
             while self.acc > self.dt:
-                for event in self.window.events:
-                    if type(event) is sf.CloseEvent:
-                        self.window.close()
-
+                self.checkEvents()
                 self.update()
-                self.render()
 
                 self.acc -= self.dt
                 self.t += self.dt
+
+            self.render()
+
+    def checkEvents(self):
+        for event in self.window.events:
+            if type(event) is sf.CloseEvent:
+                self.window.close()
 
     def update(self):
         self.game.update(self.dt)
