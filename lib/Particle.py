@@ -72,27 +72,29 @@ class ParticleContained(Particle):
 
 class VerletParticle(Particle):
 
-    def __init__(self, position, size, bounce, friction, gravity):
+    def __init__(self, position, size, mass, bounce, friction, gravity):
         self.position = position
         self.old_position = position
         self.size = size
 
+        self.mass = mass
         self.bounce = bounce
         self.friction = friction
         self.gravity = gravity
+        self.velocity = sf.Vector2(0, 0)
 
         super(VerletParticle, self).init()
 
     def update(self, dt):
-        self.v = (self.position - self.old_position) * self.friction
+        self.velocity = (self.position - self.old_position) * self.friction
         self.old_position = sf.Vector2(self.position.x, self.position.y)
-        self.position += self.v
+        self.position += self.velocity
         self.position += self.gravity
 
 class VerletParticleContained(VerletParticle):
 
-    def __init__(self, position, size, bounce, friction, gravity):
-        super(VerletParticleContained, self).__init__(position, size, bounce, friction, gravity)
+    def __init__(self, position, size, mass, bounce, friction, gravity):
+        super(VerletParticleContained, self).__init__(position, size, mass, bounce, friction, gravity)
 
     def update(self, dt):
         super(VerletParticleContained, self).update(dt)
@@ -107,13 +109,13 @@ class VerletParticleContained(VerletParticle):
     def containParticle(self):
         if self.position.x + self.size > self.right:
             self.position.x = self.right - self.size
-            self.old_position.x = self.position.x + self.v.x * self.bounce
+            self.old_position.x = self.position.x + self.velocity.x * self.bounce
         if self.position.x - self.size < self.left:
             self.position.x = self.left + self.size
-            self.old_position.x = self.position.x + self.v.x * self.bounce
+            self.old_position.x = self.position.x + self.velocity.x * self.bounce
         if self.position.y + self.size > self.bottom:
             self.position.y = self.bottom - self.size
-            self.old_position.y = self.position.y + self.v.y * self.bounce
+            self.old_position.y = self.position.y + self.velocity.y * self.bounce
         if self.position.y - self.size < self.top:
             self.position.y = self.top + self.size
-            self.old_position.y = self.position.y + self.v.y * self.bounce
+            self.old_position.y = self.position.y + self.velocity.y * self.bounce

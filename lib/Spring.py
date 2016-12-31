@@ -40,3 +40,25 @@ class Spring(object):
         self.renderShape[1].position = self.p2.position
 
         window.draw(self.renderShape)
+
+class VerletSpring(Spring):
+
+    def __init__(self, p1, p2, stiffness, damping, length):
+        super(VerletSpring, self).__init__(p1, p2, stiffness, damping, length)
+
+    def applyStringPhysics(self, dt):
+        p1_p2 = self.p2.position - self.p1.position
+        v1 = self.p1.velocity - self.p2.velocity
+        v2 = self.p2.velocity - self.p1.velocity
+
+        self.force = Math.getNormalized(p1_p2) * (Math.getLength(p1_p2) - self.length) * self.stiffness
+        f1 = self.force - (v1 * self.damping)
+        f2 = self.force + (v2 * self.damping)
+
+        f1.x /= self.p1.mass
+        f1.y /= self.p1.mass
+        f2.x /= self.p1.mass
+        f2.y /= self.p1.mass
+
+        self.p1.position += f1 * dt
+        self.p2.position -= f2 * dt
