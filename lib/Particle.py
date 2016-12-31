@@ -69,3 +69,51 @@ class ParticleContained(Particle):
         if self.position.y + self.size > self.bottom:
             self.position.y = self.bottom - self.size
             self.velocity.y *= -1
+
+class VerletParticle(Particle):
+
+    def __init__(self, position, size, bounce, friction, gravity):
+        self.position = position
+        self.old_position = position
+        self.size = size
+
+        self.bounce = bounce
+        self.friction = friction
+        self.gravity = gravity
+
+        super(VerletParticle, self).init()
+
+    def update(self, dt):
+        self.v = (self.position - self.old_position) * self.friction
+        self.old_position = sf.Vector2(self.position.x, self.position.y)
+        self.position += self.v
+        self.position += self.gravity
+
+class VerletParticleContained(VerletParticle):
+
+    def __init__(self, position, size, bounce, friction, gravity):
+        super(VerletParticleContained, self).__init__(position, size, bounce, friction, gravity)
+
+    def update(self, dt):
+        super(VerletParticleContained, self).update(dt)
+        self.containParticle()
+
+    def setWalls(self, left, right, top, bottom):
+        self.left = left
+        self.right = right
+        self.top = top
+        self.bottom = bottom
+
+    def containParticle(self):
+        if self.position.x + self.size > self.right:
+            self.position.x = self.right - self.size
+            self.old_position.x = self.position.x + self.v.x * self.bounce
+        if self.position.x - self.size < self.left:
+            self.position.x = self.left + self.size
+            self.old_position.x = self.position.x + self.v.x * self.bounce
+        if self.position.y + self.size > self.bottom:
+            self.position.y = self.bottom - self.size
+            self.old_position.y = self.position.y + self.v.y * self.bounce
+        if self.position.y - self.size < self.top:
+            self.position.y = self.top + self.size
+            self.old_position.y = self.position.y + self.v.y * self.bounce

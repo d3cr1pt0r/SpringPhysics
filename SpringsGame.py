@@ -1,7 +1,9 @@
 import sfml as sf
-from Game import Game
-from Particle import Particle, ParticleContained
-from Spring import Spring
+
+from lib.Game import Game
+from lib.Particle import ParticleContained
+from lib.Spring import Spring
+
 
 class SpringsGame(Game):
 

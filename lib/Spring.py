@@ -1,5 +1,7 @@
 import sfml as sf
-import Math
+
+from lib import Math
+
 
 class Spring(object):
 
