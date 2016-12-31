@@ -60,5 +60,7 @@ class VerletSpring(Spring):
         f2.x /= self.p1.mass
         f2.y /= self.p1.mass
 
-        self.p1.position += f1 * dt
-        self.p2.position -= f2 * dt
+        if not self.p1.locked:
+            self.p1.position += f1 * dt
+        if not self.p2.locked:
+            self.p2.position -= f2 * dt

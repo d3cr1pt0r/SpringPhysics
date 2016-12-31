@@ -76,6 +76,7 @@ class VerletParticle(Particle):
         self.position = position
         self.old_position = position
         self.size = size
+        self.locked = False
 
         self.mass = mass
         self.bounce = bounce
@@ -86,10 +87,11 @@ class VerletParticle(Particle):
         super(VerletParticle, self).init()
 
     def update(self, dt):
-        self.velocity = (self.position - self.old_position) * self.friction
-        self.old_position = sf.Vector2(self.position.x, self.position.y)
-        self.position += self.velocity
-        self.position += self.gravity
+        if not self.locked:
+            self.velocity = (self.position - self.old_position) * self.friction
+            self.old_position = sf.Vector2(self.position.x, self.position.y)
+            self.position += self.velocity
+            self.position += self.gravity
 
 class VerletParticleContained(VerletParticle):
 
