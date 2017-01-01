@@ -1,6 +1,6 @@
 import sfml as sf
 from lib.Game import Game
-from lib.Point import VerletointContained
+from lib.Point import VerletPointContained
 from lib.Stick import VerletStick
 
 class StickGame(Game):
@@ -11,15 +11,15 @@ class StickGame(Game):
         self.sticks = []
 
     def start(self):
-        p1 = VerletointContained(position=sf.Vector2(100, 100), size=3, mass=1, bounce=0.8, friction=0.999, gravity=sf.Vector2(0, 0.1))
-        p2 = VerletointContained(position=sf.Vector2(180, 100), size=3, mass=1, bounce=0.8, friction=0.999, gravity=sf.Vector2(0, 0.1))
-        p3 = VerletointContained(position=sf.Vector2(100, 180), size=3, mass=1, bounce=0.8, friction=0.999, gravity=sf.Vector2(0, 0.1))
-        p4 = VerletointContained(position=sf.Vector2(180, 180), size=3, mass=1, bounce=0.8, friction=0.999, gravity=sf.Vector2(0, 0.1))
+        p1 = VerletPointContained(position=sf.Vector2(100, 100), size=3, mass=1, bounce=0.8, friction=0.999, gravity=sf.Vector2(0, 0.1))
+        p2 = VerletPointContained(position=sf.Vector2(180, 100), size=3, mass=1, bounce=0.8, friction=0.999, gravity=sf.Vector2(0, 0.1))
+        p3 = VerletPointContained(position=sf.Vector2(100, 180), size=3, mass=1, bounce=0.8, friction=0.999, gravity=sf.Vector2(0, 0.1))
+        p4 = VerletPointContained(position=sf.Vector2(180, 180), size=3, mass=1, bounce=0.8, friction=0.999, gravity=sf.Vector2(0, 0.1))
 
-        p5 = VerletointContained(position=sf.Vector2(200, 100), size=3, mass=1, bounce=0.8, friction=0.999, gravity=sf.Vector2(0, 0.1))
-        p6 = VerletointContained(position=sf.Vector2(250, 100), size=3, mass=1, bounce=0.8, friction=0.999, gravity=sf.Vector2(0, 0.1))
-        p7 = VerletointContained(position=sf.Vector2(300, 100), size=3, mass=1, bounce=0.8, friction=0.999, gravity=sf.Vector2(0, 0.1))
-        p8 = VerletointContained(position=sf.Vector2(350, 100), size=3, mass=1, bounce=0.8, friction=0.999, gravity=sf.Vector2(0, 0.1))
+        p5 = VerletPointContained(position=sf.Vector2(200, 100), size=3, mass=1, bounce=0.8, friction=0.999, gravity=sf.Vector2(0, 0.1))
+        p6 = VerletPointContained(position=sf.Vector2(250, 100), size=3, mass=1, bounce=0.8, friction=0.999, gravity=sf.Vector2(0, 0.1))
+        p7 = VerletPointContained(position=sf.Vector2(300, 100), size=3, mass=1, bounce=0.8, friction=0.999, gravity=sf.Vector2(0, 0.1))
+        p8 = VerletPointContained(position=sf.Vector2(350, 100), size=3, mass=1, bounce=0.8, friction=0.999, gravity=sf.Vector2(0, 0.1))
 
         p1.setWalls(0, 800, 0, 600)
         p2.setWalls(0, 800, 0, 600)

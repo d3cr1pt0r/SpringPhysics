@@ -93,13 +93,13 @@ class VerletPoint(Point):
             self.position += self.velocity
             self.position += self.gravity
 
-class VerletointContained(VerletPoint):
+class VerletPointContained(VerletPoint):
 
     def __init__(self, position, size, mass, bounce, friction, gravity):
-        super(VerletointContained, self).__init__(position, size, mass, bounce, friction, gravity)
+        super(VerletPointContained, self).__init__(position, size, mass, bounce, friction, gravity)
 
     def update(self, dt):
-        super(VerletointContained, self).update(dt)
+        super(VerletPointContained, self).update(dt)
         self.containParticle()
 
     def setWalls(self, left, right, top, bottom):
