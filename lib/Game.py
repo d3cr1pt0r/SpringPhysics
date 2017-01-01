@@ -6,6 +6,9 @@ class Game(object):
     def start(self):
         pass
 
+    def events(self, event):
+        pass
+
     def update(self, delta_time):
         pass
 

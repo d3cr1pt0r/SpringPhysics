@@ -47,6 +47,8 @@ class Engine(object):
             if type(event) is sf.CloseEvent:
                 self.window.close()
 
+            self.game.events(event)
+
     def update(self):
         self.game.update(self.dt)
 
