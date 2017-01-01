@@ -1,6 +1,6 @@
 import sfml as sf
 
-class Particle(object):
+class Point(object):
 
     def __init__(self, position, size, mass, friction, gravity):
         self.position = position
@@ -36,10 +36,10 @@ class Particle(object):
         self.renderShape.position = self.position
         window.draw(self.renderShape)
 
-class ParticleContained(Particle):
+class PointContained(Point):
 
     def __init__(self, position, size, mass, friction, gravity):
-        super(ParticleContained, self).__init__(position, size, mass, friction, gravity)
+        super(PointContained, self).__init__(position, size, mass, friction, gravity)
 
         self.left = 0
         self.right = 0
@@ -53,7 +53,7 @@ class ParticleContained(Particle):
         self.bottom = bottom
 
     def update(self, dt):
-        super(ParticleContained, self).update(dt)
+        super(PointContained, self).update(dt)
         self.containParticle()
 
     def containParticle(self):
@@ -70,7 +70,7 @@ class ParticleContained(Particle):
             self.position.y = self.bottom - self.size
             self.velocity.y *= -1
 
-class VerletParticle(Particle):
+class VerletPoint(Point):
 
     def __init__(self, position, size, mass, bounce, friction, gravity):
         self.position = position
@@ -84,7 +84,7 @@ class VerletParticle(Particle):
         self.gravity = gravity
         self.velocity = sf.Vector2(0, 0)
 
-        super(VerletParticle, self).init()
+        super(VerletPoint, self).init()
 
     def update(self, dt):
         if not self.locked:
@@ -93,13 +93,13 @@ class VerletParticle(Particle):
             self.position += self.velocity
             self.position += self.gravity
 
-class VerletParticleContained(VerletParticle):
+class VerletointContained(VerletPoint):
 
     def __init__(self, position, size, mass, bounce, friction, gravity):
-        super(VerletParticleContained, self).__init__(position, size, mass, bounce, friction, gravity)
+        super(VerletointContained, self).__init__(position, size, mass, bounce, friction, gravity)
 
     def update(self, dt):
-        super(VerletParticleContained, self).update(dt)
+        super(VerletointContained, self).update(dt)
         self.containParticle()
 
     def setWalls(self, left, right, top, bottom):

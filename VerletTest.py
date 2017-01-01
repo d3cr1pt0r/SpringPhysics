@@ -1,7 +1,7 @@
 import sfml as sf
 
 from lib.Game import Game
-from lib.Particle import VerletParticleContained
+from lib.Point import VerletointContained
 from lib.Spring import VerletSpring
 
 class VerletTest(Game):
@@ -13,9 +13,9 @@ class VerletTest(Game):
         self.springs = []
 
     def start(self):
-        self.p1 = VerletParticleContained(position=sf.Vector2(100, 100), size=5, mass=1, bounce=0.8, friction=0.999, gravity=sf.Vector2(0, 0.1))
-        self.p2 = VerletParticleContained(position=sf.Vector2(200, 100), size=5, mass=1, bounce=0.8, friction=0.999, gravity=sf.Vector2(0, 0.1))
-        self.p3 = VerletParticleContained(position=sf.Vector2(150, 50), size=5, mass=1, bounce=0.8, friction=0.999, gravity=sf.Vector2(0, 0.1))
+        self.p1 = VerletointContained(position=sf.Vector2(100, 100), size=5, mass=1, bounce=0.8, friction=0.999, gravity=sf.Vector2(0, 0.1))
+        self.p2 = VerletointContained(position=sf.Vector2(200, 100), size=5, mass=1, bounce=0.8, friction=0.999, gravity=sf.Vector2(0, 0.1))
+        self.p3 = VerletointContained(position=sf.Vector2(150, 50), size=5, mass=1, bounce=0.8, friction=0.999, gravity=sf.Vector2(0, 0.1))
 
         self.p1.setWalls(0, 800, 0, 600)
         self.p2.setWalls(0, 800, 0, 600)

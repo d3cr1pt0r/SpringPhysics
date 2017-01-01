@@ -2,7 +2,7 @@ import sfml as sf
 
 from lib import Math
 from lib.Game import Game
-from lib.Particle import VerletParticleContained
+from lib.Point import VerletointContained
 from lib.Spring import VerletSpring
 
 class VerletCloth(Game):
@@ -31,7 +31,7 @@ class VerletCloth(Game):
     def start(self):
         for y in range(self.height):
             for x in range(self.width):
-                p = VerletParticleContained(position=sf.Vector2(100 + x * 20, 100 + y * 20), size=3, mass=1, bounce=0.8, friction=0.999, gravity=sf.Vector2(0, 0.1))
+                p = VerletointContained(position=sf.Vector2(100 + x * 20, 100 + y * 20), size=3, mass=1, bounce=0.8, friction=0.999, gravity=sf.Vector2(0, 0.1))
                 p.setWalls(0, 800, 0, 600)
 
                 if y == 0:

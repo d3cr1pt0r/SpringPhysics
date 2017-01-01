@@ -1,7 +1,7 @@
 import sfml as sf
 
 from lib.Game import Game
-from lib.Particle import ParticleContained
+from lib.Point import PointContained
 from lib.Spring import Spring
 
 
@@ -28,7 +28,7 @@ class SpringsGame(Game):
     def start(self):
         for y in range(self.height):
             for x in range(self.width):
-                p = ParticleContained(sf.Vector2(100 + x * 20, 100 + y * 20 - x*5), 3, 1, 1, sf.Vector2(0, 50))
+                p = PointContained(sf.Vector2(100 + x * 20, 100 + y * 20 - x * 5), 3, 1, 1, sf.Vector2(0, 50))
                 p.setWalls(0, 800, 0, 600)
                 self.particles[x][y] = p
 
