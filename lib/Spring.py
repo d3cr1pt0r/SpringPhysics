@@ -29,8 +29,8 @@ class Spring(object):
         f2.x /= self.p1.mass
         f2.y /= self.p1.mass
 
-        self.p1.velocity += f1 * dt
-        self.p2.velocity -= f2 * dt
+        self.p1.position += f1 * dt
+        self.p2.position -= f2 * dt
 
     def update(self, dt):
         self.applyStringPhysics(dt)

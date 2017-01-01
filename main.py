@@ -7,7 +7,7 @@ from lib.Engine import Engine
 game = SpringsGame()
 game = VerletTest()
 game = VerletCloth()
-game = StickGame()
+#game = StickGame()
 
 engine = Engine(800, 600, 'Springs')
 engine.setGame(game)
